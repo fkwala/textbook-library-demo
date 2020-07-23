@@ -1,0 +1,2 @@
+CPSC110,Gregor,2,true
+CPSC121,Patrice,4,false

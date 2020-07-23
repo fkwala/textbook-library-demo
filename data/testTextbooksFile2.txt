@@ -1,0 +1,3 @@
+COMM101,Connor,3,true
+ECON102,Gateman,5,false
+CHEM304,Sally,8,true
