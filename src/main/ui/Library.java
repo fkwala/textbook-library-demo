@@ -1,7 +1,9 @@
 package ui;
 
 import exception.EmptyStringException;
+import model.Booklist;
 import model.TextBook;
+import persistence.JsonWriter;
 import persistence.Reader;
 import persistence.Writer;
 
@@ -16,7 +18,7 @@ import java.util.Scanner;
 
 // TextBook Library Application
 public class Library {
-    private static final String TEXTBOOKS_FILE = "./data/textbooks.txt";
+    private static final String BOOKLIST_FILE = "./data/booklist.json";
     private Scanner input;
     static ArrayList<String> titleList = new ArrayList<>(Arrays.asList("BIOL200","COMM105","COMM292","CPSC110",
             "CPSC110","GEOG103","GEOG103","MATH202","MATH202","MATH202"));
@@ -91,7 +93,7 @@ public class Library {
     // otherwise initializes library with default values
     protected void loadLibrary() {
         try {
-            List<TextBook> textBooks = Reader.readTextBooks(new File(TEXTBOOKS_FILE));
+            List<TextBook> textBooks = Reader.readTextBooks(new File(BOOKLIST_FILE));
             LibraryData.getInstance().setActualbList(textBooks);
         } catch (IOException e) {
             init();
@@ -100,17 +102,18 @@ public class Library {
 
     // EFFECTS: saves state of textbooks to TEXTBOOKS_FILE
     protected void saveTextBook() {
-        try {
-            Writer writer = new Writer(new File(TEXTBOOKS_FILE));
-            for (TextBook tb : LibraryData.getInstance().getActualbList()) {
-                writer.write(tb);
-            }
-            writer.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("Unable to save textbooks to " + TEXTBOOKS_FILE);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+//        try {
+        JsonWriter writer = new JsonWriter(BOOKLIST_FILE);
+        Booklist tempBooklist = new Booklist();
+        tempBooklist.setActualbList(LibraryData.getInstance().getActualbList());
+        writer.write(tempBooklist);
+        writer.close();
+
+//        } catch (FileNotFoundException e) {
+//            JOptionPane.showMessageDialog(new JFrame(),"Unable to save textbooks to " + BOOKLIST_FILE);
+//        } catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        }
     }
 
 

@@ -1,0 +1,22 @@
+{
+  "bookList": [
+    {
+      "title": "COMM101",
+      "author": "Connor",
+      "edition": 3,
+      "avail": true
+    },
+    {
+      "title": "ECON102",
+      "author": "Gateman",
+      "edition": 5,
+      "avail": false
+    },
+    {
+      "title": "CHEM304",
+      "author": "Sally",
+      "edition": 8,
+      "avail": true
+    }
+  ]
+}

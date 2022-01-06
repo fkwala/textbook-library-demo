@@ -1,5 +1,6 @@
 package persistence;
 
+import model.Booklist;
 import model.TextBook;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,29 +14,28 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 // Tests for Writer class
-public class WriterTest {
-    private static final String TEST_FILE = "./data/testTextbooks.txt";
-    private static final String ERROR_FILE = "./data/Wrongfile.jpg";
-    private Writer testWriter;
-    private TextBook tb1;
-    private TextBook tb2;
+public class JsonWriterTest {
+    private static final String TEST_FILE = "./data/testBookList.json";
+    Booklist bl;
 
     @BeforeEach
     void runBefore() throws FileNotFoundException, UnsupportedEncodingException {
-        testWriter = new Writer(new File(TEST_FILE));
-        tb1 = new TextBook("CPSC110", "Gregor", 2);
-        tb2 = new TextBook("CPSC121", "Patrice", 4);
+        bl = new Booklist();
+        bl.addTextBook(new TextBook("CPSC110", "Gregor", 2));
+        bl.addTextBook(new TextBook("CPSC121", "Patrice", 4, false));
     }
 
     @Test
     void testWriteTextbooks() {
-        tb2.borrowed();
-        testWriter.write(tb1);
-        testWriter.write(tb2);
-        testWriter.close();
-
         try {
-            List<TextBook> textBookList = Reader.readTextBooks(new File(TEST_FILE));
+            JsonWriter testWriter = new JsonWriter(TEST_FILE);
+            testWriter.open();
+            testWriter.write(bl);
+            testWriter.close();
+
+            JsonReader reader = new JsonReader(TEST_FILE);
+            Booklist bookList = reader.read();
+            List<TextBook> textBookList = bookList.getActualbList();
             TextBook testtb1 = textBookList.get(0);
             assertEquals("CPSC110", testtb1.getTitle());
             assertEquals("Gregor", testtb1.getAuthor());
@@ -55,13 +55,9 @@ public class WriterTest {
 
     @Test
     void testWrongFileType() {
-        tb2.borrowed();
-        testWriter.write(tb1);
-        testWriter.write(tb2);
-        testWriter.close();
-
         try {
-            List<TextBook> textBookList = Reader.readTextBooks(new File(ERROR_FILE));
+            JsonWriter errorWriter = new JsonWriter("./data/WrongFile.json");
+            errorWriter.open();
             fail("IOException should have been thrown");
         } catch (IOException e) {
             System.out.println("IOException caught: Wrong file type");

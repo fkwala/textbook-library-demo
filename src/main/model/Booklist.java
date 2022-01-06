@@ -1,13 +1,16 @@
 package model;
 
 import exception.EmptyStringException;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
 
 import java.util.LinkedList;
 import java.util.List;
 
 
 // Booklist contains one actual Textbook list and one BooklistManager which are initialised with each new constructor
-public class Booklist {
+public class Booklist implements Writable {
     private List<TextBook> actualbList;
     private BooklistManager mainManager;
 
@@ -111,5 +114,24 @@ public class Booklist {
     public void inittempbList() {
         mainManager.tempbList = new LinkedList<>();
     }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("bookList", actualBListToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this day as a JSON array
+    private JSONArray actualBListToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (TextBook t : actualbList) {
+            jsonArray.put(t.toJson());
+        }
+
+        return jsonArray;
+    }
+
 }
 

@@ -1,0 +1,62 @@
+{"bookList": [
+    {
+        "avail": true,
+        "author": "Anne",
+        "edition": 7,
+        "title": "BIOL200"
+    },
+    {
+        "avail": true,
+        "author": "Elicia",
+        "edition": 7,
+        "title": "COMM105"
+    },
+    {
+        "avail": true,
+        "author": "Elicia",
+        "edition": 7,
+        "title": "COMM292"
+    },
+    {
+        "avail": true,
+        "author": "Greg",
+        "edition": 3,
+        "title": "CPSC110"
+    },
+    {
+        "avail": true,
+        "author": "Ian",
+        "edition": 3,
+        "title": "CPSC110"
+    },
+    {
+        "avail": true,
+        "author": "Grace",
+        "edition": 5,
+        "title": "GEOG103"
+    },
+    {
+        "avail": true,
+        "author": "Trev",
+        "edition": 4,
+        "title": "GEOG103"
+    },
+    {
+        "avail": true,
+        "author": "Rae",
+        "edition": 10,
+        "title": "MATH202"
+    },
+    {
+        "avail": true,
+        "author": "Sam",
+        "edition": 1,
+        "title": "MATH202"
+    },
+    {
+        "avail": true,
+        "author": "Sam",
+        "edition": 2,
+        "title": "MATH202"
+    }
+]}

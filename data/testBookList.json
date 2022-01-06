@@ -1,0 +1,14 @@
+{"bookList": [
+    {
+        "avail": true,
+        "author": "Gregor",
+        "edition": 2,
+        "title": "CPSC110"
+    },
+    {
+        "avail": false,
+        "author": "Patrice",
+        "edition": 4,
+        "title": "CPSC121"
+    }
+]}

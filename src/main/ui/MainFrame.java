@@ -1,6 +1,8 @@
 package ui;
 
 
+import persistence.JsonReader;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -13,7 +15,8 @@ import java.io.IOException;
 
 
 public class MainFrame extends JFrame implements ActionListener {
-    private static final String TEXTBOOKS_FILE = "./data/textbooks.txt";
+    private static final String BOOKLIST_FILE = "./data/booklist.json";
+    protected static JsonReader jsonReader = new JsonReader(BOOKLIST_FILE);
 
     // TextBook Library GUI Application
     public MainFrame() {

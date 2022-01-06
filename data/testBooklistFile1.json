@@ -1,0 +1,10 @@
+{
+  "bookList": [
+    {
+      "title": "MATH105",
+      "author": "Alice",
+      "edition": 5,
+      "avail": true
+    }
+  ]
+}

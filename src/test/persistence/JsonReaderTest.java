@@ -1,26 +1,23 @@
 package persistence;
 
+import model.Booklist;
 import model.TextBook;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
-// Tests for Reader class
-public class ReaderTest {
-
-    @Test
-    void testConstructor() {
-        Reader testReader = new Reader();
-    }
+public class JsonReaderTest {
 
     @Test
-    void testParseAccountsFile1() {
+    void testParseBookListFile1() {
+        JsonReader reader = new JsonReader("./data/testBooklistFile1.json");
         try {
-            List<TextBook> textBookList = Reader.readTextBooks(new File("./data/testTextbooksFile1.txt"));
+            Booklist bookList = reader.read();
+            List<TextBook> textBookList = bookList.getActualbList();
             TextBook testtb1 = textBookList.get(0);
             assertEquals("MATH105", testtb1.getTitle());
             assertEquals("Alice", testtb1.getAuthor());
@@ -32,9 +29,11 @@ public class ReaderTest {
     }
 
     @Test
-    void testParseAccountsFile2() {
+    void testParseBookListFile2() {
+        JsonReader reader = new JsonReader("./data/testBooklistFile2.json");
         try {
-            List<TextBook> textBookList = Reader.readTextBooks(new File("./data/testTextbooksFile2.txt"));
+            Booklist bookList = reader.read();
+            List<TextBook> textBookList = bookList.getActualbList();
             TextBook testtb1 =  textBookList.get(0);
             assertEquals("COMM101", testtb1.getTitle());
             assertEquals("Connor", testtb1.getAuthor());
@@ -58,12 +57,13 @@ public class ReaderTest {
     }
 
     @Test
-    void testIOException() {
+    void testNonExistentFile() {
+        JsonReader reader = new JsonReader("./path/does/not/exist/testBookList.json");
         try {
-            Reader.readTextBooks(new File("./path/does/not/exist/testAccount.txt"));
+            Booklist bookList = reader.read();
             fail("IOException should have been thrown");
         } catch (IOException e) {
-            // expected
+            System.out.println("File does not exist");
         }
     }
 }
