@@ -34,37 +34,6 @@ current textbook list.
 - As a user, I want to be able to reload the library's list of textbooks from file when the program starts and resume 
  exactly where I left off at a later time
 
-## Instructions for Grader:
-- You can generate the first required event (adding a Textbook to the current Textbook list) by:
-    1. Clicking on the "Donate" button
-    2. Fill in the necessary information (Title, Author, Edition)
-    3. Click on the "Confirm Donation" button
-    4. If book does not already exist in library, it will be added to the current Textbook list. 
-       Otherwise, book will not be added to the current Textbook list.
-    5. You can view the Textbooks that have been added to the current Textbook List by clicking on the "View" button
-- You can generate the second required event (borrowing a Textbook from the current Textbook list) by:
-    1. Clicking on the "Borrow" button
-    2. Click either the "Title" or "Author" button
-    3. Fill in the title / author and press "ENTER" on keyboard to submit
-    4. If title / author exists in current library, fill in the edition number on the new page.
-       Otherwise, a "Beep" sound will play and a message saying "Sorry, there is no such book in the library!" will 
-       show up
-    5. If corresponding edition exists in current library and more than 1 textbook is found, the narrowed list of 
-    textbooks will appear and user is brought back to the Main Menu. If a textbook is found, user will be prompted to 
-    confirm loan. If textbook is found but is on loan, a "Beep" sound will play and a message indicating that book is on
-    loan will show up. Otherwise, a "Beep" sound will play and a message saying "Sorry, there is no such book in the 
-    library!" will show up
-    6. Click on the "Yes" button in the Confirm Loan prompt to successfully borrow a book
-- You can locate my visual components (images) at:
-    1. Main Menu (Library Icon)
-    2. Donation Page (Donate Book Icon) after clicking the "Donate" button
-    3. Book Loan Page (Title and Author Icons) after clicking the "Borrow" button
-- You can trigger the audio component ("Beep") by:
-    1. Entering an invalid book title / author when you borrow the book
-    2. Entering an invalid edition integer after filling in book title / author
-    3. Attempting to borrow a book that is currently on loan
-- You can save the state of my application by clicking on the "Save" button on the Main Menu
-- You can auto-load the state of my application during the startup of the application
 
 ### Phase 4: Task 2
 Java language construct: Test and design a class that is robust
